@@ -1,0 +1,3 @@
+- Lambda Layer trong aws. 
+- Trong azure có concept nào tương tự lambda layer không?
+- Tạo một Azure App sử dụng Node.js  vối Azure function CRUD với Cosmos DB và dẩy deplendency lên layer giống lambda....
