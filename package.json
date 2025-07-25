@@ -1,0 +1,22 @@
+{
+  "name": "azure-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "bundle": "npx esbuild index.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/cosmos": "^4.5.0",
+    "dotenv": "^17.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.8",
+    "webpack": "^5.100.2",
+    "webpack-cli": "^6.0.1"
+  }
+}
