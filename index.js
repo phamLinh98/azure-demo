@@ -3,7 +3,7 @@ const { CosmosClient } = require("@azure/cosmos");
 let client;
 let container;
 
-export async function DemoFunction(context, req) {
+export default async function handler(context, req) {
     context.log("HTTP trigger function processed a request.");
 
     try {
@@ -136,5 +136,3 @@ export async function DemoFunction(context, req) {
         };
     }
 }
-
-module.exports = { DemoFunction };
