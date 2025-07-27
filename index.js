@@ -1,4 +1,4 @@
-const { CosmosClient } = require("@azure/cosmos");
+import { CosmosClient } from "@azure/cosmos";
 
 let client;
 let container;
