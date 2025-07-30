@@ -1,0 +1,1 @@
+zip -r my-azure-demo.zip azure-demo/

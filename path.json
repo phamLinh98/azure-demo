@@ -1,0 +1,9 @@
+{
+  "message": "Found 14374 file(s) in my-azure-demo.zip.",
+  "files": [
+        "azure-demo/node_modules/@azure/storage-blob/",
+        "azure-demo/node_modules/adm-zip/adm-zip.js/",
+        "azure-demo/node_modules/os/index.js/",
+        "azure-demo/node_modules/path/path.js/"
+  ]
+}

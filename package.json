@@ -6,7 +6,8 @@
   "type": "commonjs",
   "scripts": {
     "bundle1": "npx esbuild index.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/index.js",
-    "bundle2": "npx esbuild azuzetriggerblob.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azuzetriggerblob.js"
+    "bundle2": "npx esbuild azuzetriggerblob.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azuzetriggerblob.js",
+    "bundler3": "npx esbuild checkpath.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/checkpath.js"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +15,10 @@
   "dependencies": {
     "@azure/cosmos": "^4.5.0",
     "@azure/storage-blob": "^12.28.0",
-    "dotenv": "^17.2.0"
+    "adm-zip": "^0.5.16",
+    "dotenv": "^17.2.0",
+    "os": "^0.1.2",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "esbuild": "^0.25.8",

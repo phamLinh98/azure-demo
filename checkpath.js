@@ -1,11 +1,9 @@
 import { BlobServiceClient } from "@azure/storage-blob";
 import AdmZip from "adm-zip";
-import { writeFile } from "fs/promises";
-import path from "path";
-import os from "os";
 
 export default async function (context, req) {
-  
+  context.log("Azure Function triggered to unzip and list files in my-azure-demo.zip");
+
   try {
     // Lấy connection string từ environment variable
     const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
@@ -20,7 +18,7 @@ export default async function (context, req) {
     const containerName = "library-function";
     const containerClient = blobServiceClient.getContainerClient(containerName);
 
-    // Tên file ZIP
+    // Tên file ZIP cần giải nén
     const blobName = "my-azure-demo.zip";
     const blobClient = containerClient.getBlockBlobClient(blobName);
 
@@ -38,39 +36,18 @@ export default async function (context, req) {
     const zip = new AdmZip(buffer);
     const zipEntries = zip.getEntries();
 
-    // Tìm file hello.js
-    const helloJsEntry = zipEntries.find(entry => entry.entryName === "azure-demo/hello.js");
-    if (!helloJsEntry) {
-      throw new Error("File azure-demo/hello.js not found in my-azure-demo.zip.");
-    }
+    // Lấy danh sách tên file trong ZIP
+    const fileList = zipEntries.map(entry => entry.entryName);
+    
+    // Log danh sách file
+    fileList.forEach(file => context.log(`Found file in ZIP: ${file}`));
 
-    // Trích xuất nội dung hello.js
-    const helloJsContent = helloJsEntry.getData().toString("utf8");
-    // Lưu hello.js vào thư mục tạm của hệ thống
-    const tempDir = os.tmpdir();
-    const tempFilePath = path.join(tempDir, `hello-${Date.now()}.js`);
-    await writeFile(tempFilePath, helloJsContent);
-
-    // Import động hello.js
-    const fileUrl = `file://${path.resolve(tempFilePath).replace(/\\/g, "/")}`;
-    const module = await import(fileUrl);
-
-    // Gọi helloFunction từ module
-    const { helloFunction } = module;
-    if (!helloFunction) {
-      throw new Error("helloFunction not found in hello.js.");
-    }
-
-    // Gọi helloFunction với tham số name
-    const helloResult = helloFunction("Linh dep trai hehe");
-    context.log(`Result of helloFunction: ${helloResult}`);
-
-    // Trả về kết quả
+    // Trả về danh sách file
     context.res = {
       status: 200,
       body: {
-        message: `Successfully imported and executed azure-demo/hello.js from ${blobName}.`,
-        content: helloResult,a
+        message: `Found ${fileList.length} file(s) in ${blobName}.`,
+        files: fileList
       }
     };
   } catch (error) {
@@ -78,12 +55,12 @@ export default async function (context, req) {
     context.res = {
       status: 500,
       body: {
-        message: "An error occurred while processing the ZIP file or executing hello.js.",
+        message: "An error occurred while processing the ZIP file.",
         error: error.message
       }
     };
   }
-}
+};
 
 // Hàm helper để chuyển readable stream thành buffer
 async function streamToBuffer(readableStream) {
