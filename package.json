@@ -7,14 +7,19 @@
   "scripts": {
     "bundle1": "npx esbuild index.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/index.js",
     "bundle2": "npx esbuild azuzetriggerblob.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azuzetriggerblob.js",
-    "bundler3": "npx esbuild checkpath.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/checkpath.js"
+    "bundle3": "npx esbuild azuretriggerqueue.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azuretriggerqueue.js",
+    "bundler4": "npx esbuild azuresendmessagetoqueue.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azuresendmessagetoqueue.js",
+    "bundler5": "npx esbuild azurequeuestrigger.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azurequeuestrigger.js",
+    "bundler6": "npx esbuild blob.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/blob.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@azure/cosmos": "^4.5.0",
+    "@azure/functions": "^4.7.2-preview",
     "@azure/storage-blob": "^12.28.0",
+    "@azure/storage-queue": "^12.27.0",
     "adm-zip": "^0.5.16",
     "dotenv": "^17.2.0",
     "os": "^0.1.2",
