@@ -10,6 +10,13 @@
       "name": "DebugBlob",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/azureblobtriggeroutputbinding.js"
+    },
+    {
+      "name": "Debug AZ",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "preLaunchTask": "func: host start"
     }
   ]
 }

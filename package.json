@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "func start --inspect=9229",
     "bundle1": "npx esbuild index.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/index.js",
     "bundle2": "npx esbuild azuzetriggerblob.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azuzetriggerblob.js",
     "bundle3": "npx esbuild azuretriggerqueue.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azuretriggerqueue.js",
