@@ -1,0 +1,23 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get", "post"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "outputQueueItem",// sử dụng trong nội hàm azure function
+      "queueName": "linhclass-messages", // tên name trong service
+      "connection": "AzureWebJobsStorage"// tên kết nối trong connect string
+    }
+  ]
+}
