@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "bundle1": "npx esbuild index.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/index.js",
     "bundle2": "npx esbuild azuzetriggerblob.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azuzetriggerblob.js",
@@ -11,8 +11,8 @@
     "bundler4": "npx esbuild azuresendmessagetoqueue.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azuresendmessagetoqueue.js",
     "bundler5": "npx esbuild azurequeuestrigger.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azurequeuestrigger.js",
     "bundler6": "npx esbuild blob.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/blob.js",
-    "bundler7": "npx esbuild azurequeuetriggerbinding.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azurequeuetriggerbinding.js"
-  
+    "bundler7": "npx esbuild azurequeuetriggerbinding.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azurequeuetriggerbinding.js",
+    "bundler8": "npx esbuild azureblobtriggeroutputbinding.js --bundle --platform=node --target=node18 --format=cjs --outfile=dist/azureblobtriggeroutputbinding.js"
   },
   "keywords": [],
   "author": "",
